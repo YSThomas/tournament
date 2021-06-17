@@ -36,10 +36,10 @@ export default ({
     createTournament({commit, getters, dispatch}, data){ // Создание турнира
       data = Number(data)
 
-      if(typeof data === 'number' && data > 0 && data === Math.pow(2,Math.floor(Math.log(data)/Math.log(2)))) {
+      if(typeof data === 'number' && data === Math.pow(2,Math.floor(Math.log(data)/Math.log(2)))) {
         commit('SET_PARTICIPANTS_COUNT', data)
         commit('SET_TOURNAMENT')
-        dispatch('roundsCount')
+        dispatch('defineRoundsCount')
         dispatch('createRounds')
         dispatch('createMatches')
         console.log(getters.getTournament)
@@ -47,7 +47,7 @@ export default ({
         throw Error('Количество игроков должно быть: 2, 4, 8, 16, 32, 64...')
       }
     },
-    roundsCount({ state, commit }){ // Определяет и устанавливает кол-во раундов
+    defineRoundsCount({ state, commit }){ // Определяет и устанавливает кол-во раундов
       let num = 0
       let i = state.tournament.playersCount
       do{
