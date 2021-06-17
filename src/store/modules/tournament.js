@@ -16,20 +16,19 @@ export default ({
     SET_TOURNAMENT(state){ // Установка турнира
       state.tournament = new Tournament(state.participantsCount)
     },
-    SET_ROUNDSCOUNT(state, data){
+    SET_ROUNDSCOUNT(state, data){ // Устанавливает число раундов
       state.tournament.roundsCount = data
     },
-    SET_TOURNAMENT_ROUNDLIST(state, data){
+    SET_TOURNAMENT_ROUNDLIST(state, data){ // Устанавливает раунды в турнире (Удалить при необходимости)
       state.tournament.roundList = data
     },
-    SET_ROUNDLIST(state, data){
+    SET_ROUNDLIST(state, data){ // Устанавливает раунды в state (Удалить при необходимости)
       state.roundList = data
     },
-    SET_TOURNAMENT_ROUNDLIST_MATCHLIST(state, data){ // data = { index: i, array = array с матчами }
-      state.tournament.roundList[data.index] = data.array
+    SET_TOURNAMENT_MATCHLIST(state, data){ // Устанавливает матчи в турнире (Удалить при необходимости)
+      state.tournament.roundList[data.index].matchList = data.array // data = { index: i, array = array с матчами }
     },
-    SET_MATCHLIST(state, data){
-      state.tournament.roundList.matchList = data
+    SET_MATCHLIST(state, data){ // Устанавливает матчи в state (Удалить при необходимости)
       state.matchList = data
     }
   },
@@ -66,7 +65,7 @@ export default ({
       commit('SET_ROUNDLIST', roundList)
     },
     createMatches({ commit, getters }){ // Устанавливает мачти
-      for (let i = 0; i < getters.getTournament.roundList.length; i++) { // Для каждого раунда в state.tournament
+      for (let i = 0; i < getters.getTournament.roundList.length; i++) { // Для каждого раунда в state.tournament (Удалить при необходимости)
         let num = 1
         let elementCount = i+1
         let matchList = []
@@ -76,12 +75,12 @@ export default ({
           for (let i = 0; i < num/2; i++){
             matchList.push(new Match())
           }
-          commit('SET_TOURNAMENT_ROUNDLIST_MATCHLIST', {index: i, array: matchList})
+          commit('SET_TOURNAMENT_MATCHLIST', {index: i, array: matchList})
           matchList = []
         }while(elementCount !== 0)
       }
 
-      //Далее для state.roundList
+      //Далее для state.roundList (Удалить при необходимости)
       let num = 1
       let sum = []
       let elementCount = getters.getTournament.roundList.length
