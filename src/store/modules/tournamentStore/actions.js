@@ -21,12 +21,7 @@ export default {
   })
 },
   defineRoundsCount({ state, commit }){ // Определяет и устанавливает кол-во раундов
-  let num = 0
-  let i = state.tournament.playersCount
-  do{
-    num +=1
-    i = i/2
-  }while(i !== 1)
+  let num = Math.log(state.participantsCount) / Math.log(2);
   commit('SET_ROUNDSCOUNT', num)
 },
   createRounds({ commit, getters }){ // Создает раунды
