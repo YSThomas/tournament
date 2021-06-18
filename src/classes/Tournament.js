@@ -6,6 +6,5 @@ export default class Tournament {
   constructor(playersCount) {
     this.playersCount = playersCount
     this.roundsCount = null
-    this.roundList = []
   }
 }
