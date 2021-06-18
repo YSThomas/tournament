@@ -1,6 +1,7 @@
 import Tournament from "../../classes/Tournament";
 import Round from "../../classes/TournamentRound";
 import Match from "../../classes/TournamentRoundMatch";
+import Participant from '../../classes/TournamentRoundMatchParticipant.js'
 
 export default ({
   state: {
@@ -19,14 +20,8 @@ export default ({
     SET_ROUNDSCOUNT(state, data){ // Устанавливает число раундов
       state.tournament.roundsCount = data
     },
-    SET_TOURNAMENT_ROUNDLIST(state, data){ // Устанавливает раунды в турнире (Удалить при необходимости)
-      state.tournament.roundList = data
-    },
     SET_ROUNDLIST(state, data){ // Устанавливает раунды в state (Удалить при необходимости)
       state.roundList = data
-    },
-    SET_TOURNAMENT_MATCHLIST(state, data){ // Устанавливает матчи в турнире (Удалить при необходимости)
-      state.tournament.roundList[data.index].matchList = data.array // data = { index: i, array = array с матчами }
     },
     SET_MATCHLIST(state, data){ // Устанавливает матчи в state (Удалить при необходимости)
       state.matchList = data
@@ -61,29 +56,13 @@ export default ({
       for (let i = 0; i < getters.getTournament.roundsCount; i++){
         roundList.push(new Round())
       }
-      commit('SET_TOURNAMENT_ROUNDLIST', roundList)
       commit('SET_ROUNDLIST', roundList)
     },
     createMatches({ commit, getters }){ // Устанавливает мачти
-      for (let i = 0; i < getters.getTournament.roundList.length; i++) { // Для каждого раунда в state.tournament (Удалить при необходимости)
-        let num = 1
-        let elementCount = i+1
-        let matchList = []
-        do{
-          num *=2
-          elementCount -= 1
-          for (let i = 0; i < num/2; i++){
-            matchList.push(new Match())
-          }
-          commit('SET_TOURNAMENT_MATCHLIST', {index: i, array: matchList})
-          matchList = []
-        }while(elementCount !== 0)
-      }
-
-      //Далее для state.roundList (Удалить при необходимости)
+      //state.roundList
       let num = 1
       let sum = []
-      let elementCount = getters.getTournament.roundList.length
+      let elementCount = getters.getTournament.roundsCount
       do{
         num *=2
         elementCount -= 1
@@ -93,7 +72,7 @@ export default ({
 
       let matchArr = []
       for (let i = 0; i < sum; i++){
-        matchArr.push(new Match())
+        matchArr.push(new Match(new Participant(), new Participant()))
       }
       commit('SET_MATCHLIST', matchArr)
     }

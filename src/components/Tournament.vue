@@ -9,7 +9,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
 export default {
   name: 'Tournament',
   data(){
@@ -18,7 +17,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['createTournament'])
+    ...mapActions(['createTournament']),
   }
 }
 </script>
