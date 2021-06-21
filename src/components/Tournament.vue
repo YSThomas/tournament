@@ -29,13 +29,13 @@ export default {
             this.message = 'Турнир успешно создан'
             setTimeout(()=>{
               this.message = ''
-            }, 2000)
+            }, 3000)
           })
           .catch(e => {
             this.error = e
             setTimeout(()=>{
               this.error = ''
-            }, 2000)
+            }, 3000)
             console.error(e)
           })
     }
