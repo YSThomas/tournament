@@ -16,8 +16,6 @@ export default {
     }else{
       reject('Количество игроков должно быть: 2, 4, 8, 16, 32, 64...')
     }
-  }).catch(error =>{
-    console.log(error)
   })
 },
   defineRoundsCount({ state, commit }){ // Определяет и устанавливает кол-во раундов
@@ -32,21 +30,20 @@ export default {
   commit('SET_ROUNDLIST', roundList)
 },
   createMatches({ commit, getters }){ // Устанавливает мачти
-  //state.roundList
-  let num = 1
-  let sum = []
-  let elementCount = getters.getTournament.roundsCount
+  let matchesPerRoundCount = 1
+  let matchesCount = []
+  let roundsCount = getters.getTournament.roundsCount
   do{
-    num *=2
-    elementCount -= 1
-    sum.push(num/2)
-  }while(elementCount !== 0)
-  sum = sum.reduce((acc, current) => acc + current)
+    matchesPerRoundCount *=2
+    roundsCount -= 1
+    matchesCount.push(matchesPerRoundCount/2)
+  }while(roundsCount !== 0)
+    matchesCount = matchesCount.reduce((previousTotalValue, currentValue) => previousTotalValue + currentValue)
 
-  let matchArr = []
-  for (let i = 0; i < sum; i++){
-    matchArr.push(new Match(new Participant(), new Participant()))
+  let matchList = []
+  for (let i = 0; i < matchesCount; i++){
+    matchList.push(new Match(new Participant(), new Participant()))
   }
-  commit('SET_MATCHLIST', matchArr)
+  commit('SET_MATCHLIST', matchList)
 }
 }
