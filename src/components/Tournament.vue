@@ -3,7 +3,7 @@
     <form>
       <input v-model="playersCount" type="number">
       <button @click.prevent="renderTournament" :disabled="!playersCount">Создать турнир</button>
-      <p class="errors_list" v-for="error in errorList">{{error}}</p>
+      <p class="error" v-if="error">{{error}}</p>
       <p class="message" v-if="message">{{message}}</p>
     </form>
   </div>
@@ -17,7 +17,7 @@ export default {
     return{
       playersCount: null,
       message: '',
-      errorList:[]
+      error: ''
     }
   },
   methods: {
@@ -32,9 +32,9 @@ export default {
             }, 2000)
           })
           .catch(e => {
-            this.errorList.push(e)
+            this.error = e
             setTimeout(()=>{
-              this.errorList = []
+              this.error = ''
             }, 2000)
             console.error(e)
           })
@@ -45,6 +45,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.error{
+  font-weight: bold;
+  color: darkred;
+}
+
+.message{
+  font-weight: bold;
+  color: green;
+}
+
 h3 {
   margin: 40px 0 0;
 }
