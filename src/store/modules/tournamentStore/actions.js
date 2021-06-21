@@ -25,25 +25,19 @@ export default {
   createRounds({ commit, getters }){ // Создает раунды
   let roundList = []
   for (let i = 0; i < getters.getTournament.roundsCount; i++){
-    roundList.push(new Round())
+    roundList.push(new Round(i + 1))
   }
   commit('SET_ROUNDLIST', roundList)
 },
-  createMatches({ commit, getters }){ // Устанавливает мачти
-  let matchesPerRoundCount = 1
-  let matchesCount = []
-  let roundsCount = getters.getTournament.roundsCount
-  do{
-    matchesPerRoundCount *=2
-    roundsCount -= 1
-    matchesCount.push(matchesPerRoundCount/2)
-  }while(roundsCount !== 0)
-    matchesCount = matchesCount.reduce((previousTotalValue, currentValue) => previousTotalValue + currentValue)
+  createMatches( { state, commit, getters }){ // Устанавливает мачти
+    let matchList = []
 
-  let matchList = []
-  for (let i = 0; i < matchesCount; i++){
-    matchList.push(new Match(new Participant(), new Participant()))
+    state.roundList.forEach((round, i) =>{
+      for (let j = 0; j < Math.pow(2, round.roundNumber) / 2; j++) {
+        round.matchList.push(new Match(new Participant(), new Participant()))
+      }
+    })
+
+    commit('SET_MATCHLIST', matchList)
   }
-  commit('SET_MATCHLIST', matchList)
-}
 }

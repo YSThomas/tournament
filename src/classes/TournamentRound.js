@@ -1,5 +1,6 @@
 export default class TournamentRound {
-  constructor() {
+  constructor(roundNumber) {
+    this.roundNumber = roundNumber
     this.matchList = []
   }
 }
