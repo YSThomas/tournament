@@ -3,18 +3,19 @@
     <form>
       <input v-model="playersCount" type="number">
       <button @click.prevent="renderTournament" :disabled="!playersCount">Создать турнир</button>
-      <p class="error" v-if="error">{{error}}</p>
-      <p class="message" v-if="message">{{message}}</p>
+      <p class="error" v-if="error">{{ error }}</p>
+      <p class="message" v-if="message">{{ message }}</p>
     </form>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
+
 export default {
   name: 'Tournament',
-  data(){
-    return{
+  data() {
+    return {
       playersCount: null,
       message: '',
       error: ''
@@ -23,17 +24,17 @@ export default {
   methods: {
     ...mapActions(['createTournament']),
 
-    renderTournament(){
+    renderTournament() {
       this.createTournament(this.playersCount)
           .then(success => {
             this.message = 'Турнир успешно создан'
-            setTimeout(()=>{
+            setTimeout(() => {
               this.message = ''
             }, 3000)
           })
           .catch(e => {
             this.error = e
-            setTimeout(()=>{
+            setTimeout(() => {
               this.error = ''
             }, 3000)
             console.error(e)
@@ -45,12 +46,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error{
+.error {
   font-weight: bold;
   color: darkred;
 }
 
-.message{
+.message {
   font-weight: bold;
   color: green;
 }
@@ -58,14 +59,17 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }

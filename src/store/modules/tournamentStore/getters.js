@@ -1,5 +1,5 @@
 export default {
-  getTournament(state){
+  getTournament(state) {
     return state.tournament
   }
 }

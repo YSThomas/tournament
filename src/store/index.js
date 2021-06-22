@@ -1,16 +1,12 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
 import tournament from "./modules/tournament";
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
+  state: {},
+  mutations: {},
+  actions: {},
   modules: {
     tournament
   },
-  getters:{
-  }
+  getters: {}
 })
