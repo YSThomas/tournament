@@ -7,5 +7,8 @@ export default {
   },
   getRoundList(state){
     return state.roundList
+  },
+  getMatchList(state){
+    return state.matchList
   }
 }

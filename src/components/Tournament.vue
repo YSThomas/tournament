@@ -1,5 +1,5 @@
 <template>
-  <div class="tournament">
+  <div class="tournament_settings">
     <form>
       <input v-model="playersCount" type="number">
       <button @click.prevent="renderTournament" :disabled="!playersCount">Создать турнир</button>
@@ -8,8 +8,7 @@
     </form>
   </div>
   <hr>
-  <div class="">
-
+  <div class="tournament_brackets">
   </div>
 </template>
 
@@ -44,6 +43,9 @@ export default {
             console.error(e)
           })
     }
+  },
+  computed:{
+    ...mapGetters(['getRoundList', 'getMatchList']),
   }
 }
 </script>
@@ -60,7 +62,7 @@ export default {
   color: green;
 }
 
-.tournament form{
+.tournament_settings form{
   text-align: center;
 }
 
