@@ -7,6 +7,10 @@
       <p class="message" v-if="message">{{ message }}</p>
     </form>
   </div>
+  <hr>
+  <div class="">
+
+  </div>
 </template>
 
 <script>
@@ -56,21 +60,25 @@ export default {
   color: green;
 }
 
-h3 {
-  margin: 40px 0 0;
+.tournament form{
+  text-align: center;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+/*h3 {*/
+/*  margin: 40px 0 0;*/
+/*}*/
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+/*ul {*/
+/*  list-style-type: none;*/
+/*  padding: 0;*/
+/*}*/
 
-a {
-  color: #42b983;
-}
+/*li {*/
+/*  display: inline-block;*/
+/*  margin: 0 10px;*/
+/*}*/
+
+/*a {*/
+/*  color: #42b983;*/
+/*}*/
 </style>

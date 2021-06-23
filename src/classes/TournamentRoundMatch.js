@@ -3,9 +3,10 @@ export default class TournamentRoundMatch {
    *
    * @param participantNameList
    */
-  constructor(date, ...participantNameList) {
+  constructor(date,numberMatch,numberRound, ...participantNameList) {
     this.date = date
-    this.score = `0 - 0`
+    this.numberMatch = numberMatch
+    this.numberRound = numberRound
     this.participantList = [...participantNameList]
     this.isCompleted = this.date < new Date()
   }

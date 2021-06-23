@@ -3,11 +3,11 @@ import Match from "../../../classes/TournamentRoundMatch";
 import Participant from "../../../classes/TournamentRoundMatchParticipant";
 
 export default {
-  createTournament({commit, getters, dispatch}, data) { // Создание турнира
+  createTournament({commit, getters, dispatch}, participantsCount) { // Создание турнира
     return new Promise((resolve, reject) => {
-      data = Number(data)
-      if (typeof data === 'number' && data > 1 && data === Math.pow(2, Math.floor(Math.log(data) / Math.log(2)))) {
-        commit('SET_PARTICIPANTS_COUNT', data)
+      participantsCount = Number(participantsCount)
+      if (typeof participantsCount === 'number' && participantsCount > 1 && participantsCount === Math.pow(2, Math.floor(Math.log(participantsCount) / Math.log(2)))) {
+        commit('SET_PARTICIPANTS_COUNT', participantsCount)
         commit('SET_TOURNAMENT')
         dispatch('defineRoundsCount')
         dispatch('createRounds')
@@ -19,8 +19,8 @@ export default {
     })
   },
   defineRoundsCount({state, commit}) { // Определяет и устанавливает кол-во раундов
-    let num = Math.log(state.participantsCount) / Math.log(2);
-    commit('SET_ROUNDSCOUNT', num)
+    let roundsCount = Math.log(state.participantsCount) / Math.log(2);
+    commit('SET_ROUNDSCOUNT', roundsCount)
   },
   createRounds({commit, getters}) { // Создает раунды
     let roundList = []
@@ -29,13 +29,12 @@ export default {
     }
     commit('SET_ROUNDLIST', roundList)
   },
-  createMatches({state, commit, getters}) { // Устанавливает мачти
+  createMatches({commit, getters}) { // Устанавливает мачти
     let matchList = []
 
-    state.roundList.forEach((round, i) => {
-      for (let j = 0; j < Math.pow(2, round.roundNumber) / 2; j++) {
-        let currentMatch = new Match(new Date(2021, Math.floor(Math.random() * 11), Math.floor(Math.random() * 31) + 1), new Participant("TBA"), new Participant("TBA"))
-        round.matchList.push(currentMatch)
+    getters.getRoundList.forEach((round, i) => {
+      for (let j = 0; j < getters.getParticipantsCount / Math.pow(2, round.roundNumber); j++) {
+        let currentMatch = new Match(new Date(2021, Math.floor(Math.random() * 11), Math.floor(Math.random() * 31) + 1),j+1,round.roundNumber, new Participant("TBA"), new Participant("TBA"))
         matchList.push(currentMatch)
       }
     })
