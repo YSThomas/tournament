@@ -105,6 +105,15 @@ export default {
   min-height: 100%;
 }
 
+.match{
+  display: flex;
+  flex: 0 1 auto;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
 .match_card{
   display: flex;
   align-items: center;
@@ -113,15 +122,7 @@ export default {
   border-radius: 10px;
   height: 4rem;
   width: 12rem;
-}
-
-.match{
-  display: flex;
-  flex: 0 1 auto;
   justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
 }
 
 .match_score{
