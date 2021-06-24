@@ -85,29 +85,13 @@ export default {
 
 .tournament_brackets{
   display: flex;
-  /*flex-direction: column;*/
-
-  /*display: block;*/
-  /*margin-left: -3px;*/
-  /*flex: 1;*/
+  max-width: 1500px;
 }
 
 .round{
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*justify-content: center;*/
-  /*padding-left: 3rem;*/
-
   display: block;
   margin-left: -3px;
   flex: 1;
-
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*flex-flow: row wrap;*/
-  /*justify-content: center;*/
-  /*height: 100%;*/
-  /*min-height: 100%;*/
 }
 
 .round__list-items{
@@ -130,8 +114,6 @@ export default {
 }
 
 .match{
-  /*margin-bottom: 30px;*/
-
   display: flex;
   flex: 0 1 auto;
   justify-content: center;
@@ -154,17 +136,4 @@ ul {
   list-style-type: none;
   padding: 0;
 }
-
-/*h3 {*/
-/*  margin: 40px 0 0;*/
-/*}*/
-
-/*li {*/
-/*  display: inline-block;*/
-/*  margin: 0 10px;*/
-/*}*/
-
-/*a {*/
-/*  color: #42b983;*/
-/*}*/
 </style>
