@@ -85,7 +85,9 @@ export default {
 
 .tournament_brackets{
   display: flex;
+  justify-content: center;
   max-width: 1500px;
+  margin: 0 auto;
 }
 
 .round{
@@ -135,5 +137,13 @@ export default {
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+@media (max-width: 980px) {
+  .tournament_brackets{
+    display: block;
+    max-width: 460px;
+    margin: 0 auto;
+  }
 }
 </style>
