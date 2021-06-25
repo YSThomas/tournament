@@ -1,15 +1,16 @@
 <template>
-  <Tournament/>
+<!--  <Tournament/>-->
+  <router-view></router-view>
 </template>
 
 <script>
-import Tournament from './components/Tournament.vue'
+// import Tournament from './components/Tournament.vue'
 
 export default {
   name: 'App',
-  components: {
-    Tournament
-  }
+  // components: {
+  //   // Tournament
+  // }
 }
 </script>
 

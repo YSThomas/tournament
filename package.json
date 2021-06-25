@@ -9,6 +9,7 @@
   "dependencies": {
     "bootstrap": "^5.0.0-beta3",
     "vue": "^3.0.0",
+    "vue-router": "^4.0.5",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
