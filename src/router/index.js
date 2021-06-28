@@ -6,7 +6,7 @@ export default createRouter({
     {
       path: '/',
       name: 'main',
-      component: () => import(/* webpackChunkName: "main"*/ "../view/Tournament")
+      component: () => import(/* webpackChunkName: "main"*/ "../view/TournamentPage")
     }
   ]
 })
