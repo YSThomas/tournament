@@ -1,6 +1,4 @@
 <template>
-  <ul class="round__list-items">
-    <li class="match" v-for="match in round">
       <div class="match_card" :class="{match_complete: match.isCompleted}">
         <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
         <span class="match_score">
@@ -8,37 +6,16 @@
             </span>
         <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
       </div>
-    </li>
-  </ul>
 </template>
 
 <script>
 export default {
   name: "Match",
-  props:{
-    round: Array
-  }
+  props:['match']
 }
 </script>
 
 <style scoped>
-.round__list-items{
-  display: flex;
-  flex-direction: column;
-  flex-flow: row wrap;
-  justify-content: center;
-  height: 100%;
-  min-height: 100%;
-}
-
-.match{
-  display: flex;
-  flex: 0 1 auto;
-  justify-content: center;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-}
 
 .match_card{
   display: flex;

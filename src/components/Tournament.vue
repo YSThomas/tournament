@@ -9,7 +9,9 @@
   </div>
   <hr>
   <div class="tournament_brackets">
-    <Round />
+    <div class="round" v-for="round in getRoundList">
+      <Round :round="round"></Round>
+    </div>
   </div>
 </template>
 
@@ -74,6 +76,12 @@ export default {
   justify-content: center;
   max-width: 53%;
   margin: 0 auto;
+}
+
+.round{
+  display: block;
+  margin-left: -3px;
+  flex: 1;
 }
 
 ul {
