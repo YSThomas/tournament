@@ -17,4 +17,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.number_1 .round__list-items .match .match_card::before{
+  display: none;
+}
 </style>

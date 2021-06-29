@@ -33,6 +33,26 @@ export default {
   justify-content: center;
 }
 
+.match_card::before{
+  content: "";
+  border-top: 2px solid #4f7a38;
+  position: absolute;
+  height: 2px;
+  width: 10px;
+  left: -10px;
+  top: 50%;
+}
+
+.match_card::before{
+  content: "";
+  border-top: 2px solid #4f7a38;
+  position: absolute;
+  height: 2px;
+  width: 10px;
+  left: -10px;
+  top: 50%;
+}
+
 .match_complete{
   background-color: #008000;
   color: white;

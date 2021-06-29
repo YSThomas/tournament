@@ -9,7 +9,7 @@
   </div>
   <hr>
   <div class="tournament_brackets">
-    <div class="round" v-for="round in getRoundList">
+    <div class="round" :class="`number_${i+1}`" v-for="(round, i) in getRoundList">
       <Round :round="round"></Round>
     </div>
   </div>
