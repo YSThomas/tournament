@@ -8,8 +8,8 @@
     </form>
   </div>
   <hr>
-  <div class="tournament_brackets">
-    <div class="round" :class="`number_${i+1}`" v-for="(round, i) in getRoundList">
+  <div class="tournament_bracket">
+    <div class="round" :class="`round__number-${i+1}`" v-for="(round, i) in getRoundList">
       <Round :round="round"></Round>
     </div>
   </div>
@@ -71,10 +71,10 @@ export default {
   text-align: center;
 }
 
-.tournament_brackets{
+.tournament_bracket{
   display: flex;
   justify-content: center;
-  max-width: 35%;
+  max-width: 28%;
   margin: 0 auto;
 }
 

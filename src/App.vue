@@ -18,7 +18,9 @@ export default {
   margin-top: 60px;
 }
 
-.number_1 .round__list-items .match .match_card::before{
+.round__number-1 .round__list-items .match .match_card::before{
   display: none;
 }
+
+
 </style>

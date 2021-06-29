@@ -1,5 +1,5 @@
 <template>
-      <div class="match_card" :class="{match_complete: match.isCompleted}">
+      <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0}">
         <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
         <span class="match_score" v-if="match.isCompleted">
               {{match.participantList[0].score}} - {{match.participantList[1].score}}
@@ -37,20 +37,34 @@ export default {
   content: "";
   border-top: 2px solid #4f7a38;
   position: absolute;
-  height: 2px;
-  width: 10px;
-  left: -10px;
+  width: 1.7em;
+  left: -1.7em;
   top: 50%;
 }
 
-.match_card::before{
-  content: "";
-  border-top: 2px solid #4f7a38;
+.match_card:after {
+  content:'';
+  border-color: #4f7a38;
+  border-width: 2px;
   position: absolute;
-  height: 2px;
+  display: block;
   width: 10px;
-  left: -10px;
+  right: -11px;
+}
+
+.match_card:after {
+  content: '';
+  border-right-style: solid;
+  border-bottom-style: solid;
+  height: -100%;
   top: 50%;
+}
+.match_card.even:after {
+  content: '';
+  border-right-style: solid;
+  border-bottom-style: solid;
+  height: 100%;
+  top: -50%;
 }
 
 .match_complete{
