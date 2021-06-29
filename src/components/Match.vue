@@ -1,8 +1,12 @@
 <template>
       <div class="match_card" :class="{match_complete: match.isCompleted}">
         <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
-        <span class="match_score">
+        <span class="match_score" v-if="match.isCompleted">
               {{match.participantList[0].score}} - {{match.participantList[1].score}}
+            </span>
+        <span class="match_score" v-else>
+               {{match.date.getMonth()}} / {{match.date.getDate()}} / {{match.date.getFullYear()}}
+          <small class="date">mm/dd/yyyy</small>
             </span>
         <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
       </div>
@@ -21,15 +25,26 @@ export default {
   display: flex;
   align-items: center;
   background-color: #c7ffc7;
-  border: 1px solid green;
+  color: black;
+  border: 2px solid green;
   border-radius: 10px;
   height: 4rem;
   width: 12rem;
   justify-content: center;
 }
 
+.match_complete{
+  background-color: #008000;
+  color: white;
+  border: 2px solid #C7FFC7FF;
+}
+
 .match_score{
   margin: 0 0.3rem;
+}
+
+.date{
+  opacity: 40%;
 }
 
 .participant_img{

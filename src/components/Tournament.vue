@@ -74,7 +74,7 @@ export default {
 .tournament_brackets{
   display: flex;
   justify-content: center;
-  max-width: 53%;
+  max-width: 35%;
   margin: 0 auto;
 }
 
