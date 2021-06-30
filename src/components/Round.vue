@@ -1,5 +1,5 @@
 <template>
-    <span>Round {{round.roundNumber}}</span>
+  <span>Round {{ round.roundNumber }}</span>
   <ul class="round__list-items">
     <li class="match" v-for="match in getMatchListByRoundNumber(round.roundNumber)">
       <Match :match="match"></Match>
@@ -17,18 +17,18 @@ export default {
   props: ['round'],
   components: {Match},
   methods: {
-    getMatchListByRoundNumber(roundNumber){
+    getMatchListByRoundNumber(roundNumber) {
       return this.getMatchList.filter(match => match['numberRound'] === roundNumber)
     },
   },
-  computed:{
+  computed: {
     ...mapGetters(['getRoundList', 'getMatchList']),
   }
 }
 </script>
 
 <style scoped>
-.round__list-items{
+.round__list-items {
   display: flex;
   flex-direction: column;
   flex-flow: row wrap;
@@ -37,7 +37,7 @@ export default {
   min-height: 100%;
 }
 
-.match{
+.match {
   display: flex;
   flex: 0 1 auto;
   justify-content: center;

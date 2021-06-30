@@ -49,7 +49,7 @@ export default {
           })
     },
   },
-  computed:{
+  computed: {
     ...mapGetters(['getRoundList', 'getMatchList']),
   }
 }
@@ -67,18 +67,18 @@ export default {
   color: green;
 }
 
-.tournament_settings form{
+.tournament_settings form {
   text-align: center;
 }
 
-.tournament_bracket{
+.tournament_bracket {
   display: flex;
   justify-content: center;
   max-width: 28%;
   margin: 0 auto;
 }
 
-.round{
+.round {
   display: block;
   margin-left: -3px;
   flex: 1;
@@ -90,7 +90,7 @@ ul {
 }
 
 @media (max-width: 1024px) {
-  .tournament_brackets{
+  .tournament_bracket {
     display: block;
     max-width: 460px;
     margin: 0 auto;

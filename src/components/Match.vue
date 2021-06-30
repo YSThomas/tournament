@@ -1,27 +1,27 @@
 <template>
-      <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0}">
-        <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
-        <span class="match_score" v-if="match.isCompleted">
-              {{match.participantList[0].score}} - {{match.participantList[1].score}}
-            </span>
-        <span class="match_score" v-else>
-               {{match.date.getMonth()}} / {{match.date.getDate()}} / {{match.date.getFullYear()}}
-          <small class="date">mm/dd/yyyy</small>
-            </span>
-        <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
-      </div>
+  <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0}">
+    <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
+    <span class="match_score" v-if="match.isCompleted">
+      {{ match.participantList[0].score }} - {{ match.participantList[1].score }}
+    </span>
+    <span class="match_score" v-else>
+      {{ match.date.getMonth() }} / {{ match.date.getDate() }} / {{ match.date.getFullYear() }}
+      <small class="date">mm/dd/yyyy</small>
+    </span>
+    <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
+  </div>
 </template>
 
 <script>
 export default {
   name: "Match",
-  props:['match']
+  props: ['match']
 }
 </script>
 
 <style scoped>
 
-.match_card{
+.match_card {
   display: flex;
   align-items: center;
   background-color: #c7ffc7;
@@ -33,7 +33,7 @@ export default {
   justify-content: center;
 }
 
-.match_card::before{
+.match_card::before {
   content: "";
   border-top: 2px solid #4f7a38;
   position: absolute;
@@ -43,7 +43,7 @@ export default {
 }
 
 .match_card:after {
-  content:'';
+  content: '';
   border-color: #4f7a38;
   border-width: 2px;
   position: absolute;
@@ -53,12 +53,11 @@ export default {
 }
 
 .match_card:after {
-  content: '';
   border-right-style: solid;
   border-bottom-style: solid;
-  height: -100%;
   top: 50%;
 }
+
 .match_card.even:after {
   content: '';
   border-right-style: solid;
@@ -67,23 +66,33 @@ export default {
   top: -50%;
 }
 
-.match_complete{
+.match_complete {
   background-color: #008000;
   color: white;
   border: 2px solid #C7FFC7FF;
 }
 
-.match_score{
+.match_score {
   margin: 0 0.3rem;
 }
 
-.date{
+.date {
   opacity: 40%;
 }
 
-.participant_img{
+.participant_img {
   border-radius: 50%;
   height: 40px;
   width: 40px;
+}
+
+@media (max-width: 1024px) {
+  .match_card::after {
+    display: none;
+  }
+
+  .match_card::before {
+    display: none;
+  }
 }
 </style>
