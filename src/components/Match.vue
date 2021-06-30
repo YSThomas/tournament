@@ -1,5 +1,5 @@
 <template>
-  <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0}">
+  <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0, last_match: isLastMatch}">
     <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
     <span class="match_score" v-if="match.isCompleted">
       {{ match.participantList[0].score }} - {{ match.participantList[1].score }}
@@ -15,7 +15,10 @@
 <script>
 export default {
   name: "Match",
-  props: ['match']
+  props: {
+    match: Object,
+    isLastMatch: Boolean
+  }
 }
 </script>
 
@@ -31,6 +34,10 @@ export default {
   height: 4rem;
   width: 12rem;
   justify-content: center;
+}
+
+.match_card.last_match::after{
+  display: none;
 }
 
 .match_card::before {
@@ -86,7 +93,7 @@ export default {
   width: 40px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .match_card::after {
     display: none;
   }

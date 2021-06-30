@@ -89,7 +89,7 @@ ul {
   padding: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .tournament_bracket {
     display: block;
     max-width: 460px;

@@ -1,8 +1,8 @@
 <template>
-  <span>Round {{ round.roundNumber }}</span>
+  <span class="round-number">Round {{ round.roundNumber }}</span>
   <ul class="round__list-items">
     <li class="match" v-for="match in getMatchListByRoundNumber(round.roundNumber)">
-      <Match :match="match"></Match>
+      <Match :match="match" :isLastMatch="match === getMatchList[getMatchList.length - 1]"></Match>
     </li>
   </ul>
 </template>
@@ -14,7 +14,9 @@ import Match from "./Match";
 
 export default {
   name: "Round",
-  props: ['round'],
+  props: {
+    round: Object
+  },
   components: {Match},
   methods: {
     getMatchListByRoundNumber(roundNumber) {
@@ -28,6 +30,12 @@ export default {
 </script>
 
 <style scoped>
+.round-number{
+  display: flex;
+  justify-content: center;
+  font-weight: bolder;
+}
+
 .round__list-items {
   display: flex;
   flex-direction: column;
