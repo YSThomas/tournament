@@ -1,6 +1,6 @@
 <template>
   <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0, last_match: isLastMatch}">
-    <img @click="match.participantList[0].score++" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
+    <img @click="increaseMatchParticipantScore(match, 0)" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
     <span class="match_score" v-if="match.isCompleted">
       {{ match.participantList[0].score }} - {{ match.participantList[1].score }}
     </span>
@@ -8,7 +8,7 @@
       {{ match.date.getMonth() }} / {{ match.date.getDate() }} / {{ match.date.getFullYear() }}
       <small class="date">mm/dd/yyyy</small>
     </span>
-    <img @click="match.participantList[1].score++" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
+    <img @click="increaseMatchParticipantScore(match, 1)" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
   </div>
 </template>
 
@@ -18,6 +18,12 @@ export default {
   props: {
     match: Object,
     isLastMatch: Boolean
+  },
+  methods:{
+    increaseMatchParticipantScore(match, i){ // Принимает матч и индекс участника в матче
+      match.participantList[i].score++ // Увеличивает счет у участника под указанным индексом
+      match.generalMatchScore++ // Увеличивает глобальный счетчик очков в матче
+    }
   }
 }
 </script>
