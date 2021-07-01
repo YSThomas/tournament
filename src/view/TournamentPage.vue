@@ -9,7 +9,7 @@
     </form>
   </div>
   <hr>
-  <Tournament :roundList="getRoundList" :matchList="getMatchList"></Tournament>
+  <Tournament :roundList="getRoundList" :matchList="getMatchList" :generalScore="generalScore"></Tournament>
 </template>
 
 <script>

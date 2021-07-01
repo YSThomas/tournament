@@ -1,7 +1,7 @@
 <template>
   <div class="tournament_bracket">
     <div class="round" :class="`round__number-${i+1}`" v-for="(round, i) in roundList">
-      <Round :round="round" :matchList="matchList"></Round>
+      <Round :round="round" :matchList="matchList" :generalScore="generalScore"></Round>
     </div>
   </div>
 </template>
@@ -19,6 +19,10 @@ export default {
     },
     matchList: {
       type: Array,
+      required: true
+    },
+    generalScore:{
+      type: Number,
       required: true
     }
   }
