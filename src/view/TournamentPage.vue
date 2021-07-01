@@ -48,7 +48,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['getRoundList', 'getMatchList']),
+    ...mapGetters(['getTournament','getRoundList', 'getMatchList']),
   }
 }
 </script>
