@@ -2,29 +2,26 @@
   <span class="round-number">Round {{ round.roundNumber }}</span>
   <ul class="round__list-items">
     <li class="match" v-for="match in getMatchListByRoundNumber(round.roundNumber)">
-      <Match :match="match" :isLastMatch="match === getMatchList[getMatchList.length - 1]"></Match>
+      <Match :match="match" :isLastMatch="match === matchList[matchList.length - 1]"></Match>
     </li>
   </ul>
 </template>
 
 <script>
-import {mapGetters} from "vuex";
 import Match from "./Match";
 
 
 export default {
   name: "Round",
   props: {
-    round: Object
+    round: Object,
+    matchList: Array
   },
   components: {Match},
   methods: {
     getMatchListByRoundNumber(roundNumber) {
-      return this.getMatchList.filter(match => match['numberRound'] === roundNumber)
+      return this.matchList.filter(match => match['numberRound'] === roundNumber)
     },
-  },
-  computed: {
-    ...mapGetters(['getRoundList', 'getMatchList']),
   }
 }
 </script>
