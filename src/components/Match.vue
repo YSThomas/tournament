@@ -1,6 +1,6 @@
 <template>
   <div class="match_card" :class="{match_complete: match.isCompleted, even: match.numberMatch % 2 === 0, last_match: isLastMatch}">
-    <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
+    <img @click="match.participantList[0].score++" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
     <span class="match_score" v-if="match.isCompleted">
       {{ match.participantList[0].score }} - {{ match.participantList[1].score }}
     </span>
@@ -8,7 +8,7 @@
       {{ match.date.getMonth() }} / {{ match.date.getDate() }} / {{ match.date.getFullYear() }}
       <small class="date">mm/dd/yyyy</small>
     </span>
-    <img class="participant_img" src="../assets/tba_400x400.jpg" alt="TBA">
+    <img @click="match.participantList[1].score++" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
   </div>
 </template>
 
@@ -91,6 +91,11 @@ export default {
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  transition: 0.3s;
+}
+
+.participant_img:hover{
+  transform: scale(1.2);
 }
 
 @media (max-width: 1023px) {

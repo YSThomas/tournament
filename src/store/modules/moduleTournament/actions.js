@@ -1,6 +1,6 @@
-import Round from "../../../classes/TournamentRound";
-import Match from "../../../classes/TournamentRoundMatch";
-import Participant from "../../../classes/TournamentRoundMatchParticipant";
+import Round from "@/classes/TournamentRound";
+import Match from "@/classes/TournamentRoundMatch";
+import Participant from "@/classes/TournamentRoundMatchParticipant";
 
 export default {
   createTournament({commit, getters, dispatch}, participantsCount) { // Создание турнира

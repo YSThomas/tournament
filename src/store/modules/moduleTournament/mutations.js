@@ -1,4 +1,4 @@
-import Tournament from "../../../classes/Tournament";
+import Tournament from "@/classes/Tournament";
 
 export default {
   SET_PARTICIPANTS_COUNT(state, data){ // Установка количества участников

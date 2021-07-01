@@ -1,7 +1,8 @@
 <template>
   <div class="tournament_settings">
     <form>
-      <input v-model="playersCount" type="number">
+      <input v-model="playersCount" type="number" placeholder="Введите кол-во игроков"><br>
+      <input v-model="generalScore" type="number" placeholder="Введите до скольки очков идет игра"><br>
       <button @click.prevent="renderTournament" :disabled="!playersCount">Создать турнир</button>
       <p class="error" v-if="error">{{ error }}</p>
       <p class="message" v-if="message">{{ message }}</p>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import Tournament from "../components/Tournament";
+import Tournament from "@/components/Tournament";
 import {mapActions, mapGetters} from "vuex";
 
 export default {
@@ -21,6 +22,7 @@ export default {
   data() {
     return {
       playersCount: null,
+      generalScore: null,
       message: '',
       error: ''
     }

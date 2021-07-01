@@ -6,5 +6,6 @@ export default class TournamentRoundMatchParticipant{
   constructor(name) {
     this.name = name || 'Participant'
     this.score = 0
+    this.img="tba_400x400.jpg"
   }
 }
