@@ -26,7 +26,7 @@ export default class TournamentRoundMatchParticipant{
     }
 
 
-    this.name = randomName(names) || 'Participant'
+    this.name = name || randomName(names)
     this.score = 0
     this.img="tba_400x400.jpg"
   }

@@ -22,7 +22,6 @@ export default {
       required: true
     },
     generalScore:{
-      type: Number,
       required: true
     }
   }

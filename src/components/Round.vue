@@ -16,7 +16,9 @@ export default {
   props: {
     round: Object,
     matchList: Array,
-    generalScore:Number
+    generalScore:{
+      required: true
+    }
   },
   components: {Match},
   methods: {

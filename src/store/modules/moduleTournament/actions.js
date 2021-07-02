@@ -34,7 +34,10 @@ export default {
 
     getters.getRoundList.forEach((round, i) => {
       for (let j = 0; j < getters.getParticipantsCount / Math.pow(2, round.roundNumber); j++) {
-        let currentMatch = new Match(new Date(2021, Math.floor(Math.random() * 11), Math.floor(Math.random() * 31) + 1),j+1,round.roundNumber, new Participant("TBA"), new Participant("TBA"))
+        let randomDate = new Date(2021, Math.floor(Math.random() * 11), Math.floor(Math.random() * 31) + 1)
+        let matchNumber = j + 1
+
+        let currentMatch = round.roundNumber===1? new Match(randomDate,matchNumber,round.roundNumber, new Participant(), new Participant()) : new Match(randomDate,matchNumber,round.roundNumber, new Participant("TBA"), new Participant("TBA"))
         matchList.push(currentMatch)
       }
     })

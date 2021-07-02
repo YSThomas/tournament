@@ -1,6 +1,9 @@
 export default class TournamentRoundMatch {
   /**
    *
+   * @param date
+   * @param numberMatch
+   * @param numberRound
    * @param participantNameList
    */
   constructor(date,numberMatch,numberRound, ...participantNameList) {

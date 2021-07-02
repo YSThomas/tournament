@@ -24,10 +24,13 @@ export default {
   props: {
     match: Object,
     isLastMatch: Boolean,
-    generalScore: Number
+    generalScore: {
+      required: true
+    }
   },
   methods:{
     increaseMatchParticipantScore(match, i, generalScore){ // Принимает матч и индекс участника в матче
+      generalScore = parseInt(generalScore)
       if(match.generalMatchScore < generalScore){ // Если в матче общий счет меньше generalScore (указывается в настройках матча TournamentPage.vue)
         match.participantList[i].score++ // Увеличивает счет у участника под указанным индексом
         match.generalMatchScore++ // Увеличивает глобальный счетчик очков в матче
