@@ -51,7 +51,6 @@ export default {
 .participant_name-item{
   position: absolute;
   top: -7px;
-  /*z-index: 1;*/
   font-weight: 700;
   left: 2px;
   font-size: 0.6rem;
@@ -128,7 +127,7 @@ export default {
 }
 
 .participant_img:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media (max-width: 1023px) {
