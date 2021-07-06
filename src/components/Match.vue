@@ -3,7 +3,7 @@
     <div class="participant_name">
       <small class="participant_name-item">{{match.participantList[0].name}}</small>
     </div>
-    <img @click="increaseMatchParticipantScore(match, 0, generalScore)" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
+    <img @click="increaseMatchParticipantScore({match, i:0, generalScore})" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
     <span class="match_score" v-if="match.isCompleted">
       {{ match.participantList[0].score }} - {{ match.participantList[1].score }}
     </span>
@@ -14,11 +14,13 @@
     <div class="participant_name">
       <small class="participant_name-item">{{match.participantList[1].name}}</small>
     </div>
-    <img @click="increaseMatchParticipantScore(match, 1, generalScore)" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
+    <img @click="increaseMatchParticipantScore({match, i:1, generalScore})" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
   </div>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: "Match",
   props: {
@@ -29,13 +31,7 @@ export default {
     }
   },
   methods:{
-    increaseMatchParticipantScore(match, i, generalScore){ // Принимает матч и индекс участника в матче
-      generalScore = parseInt(generalScore)
-      if(match.generalMatchScore < generalScore){ // Если в матче общий счет меньше generalScore (указывается в настройках матча TournamentPage.vue)
-        match.participantList[i].score++ // Увеличивает счет у участника под указанным индексом
-        match.generalMatchScore++ // Увеличивает глобальный счетчик очков в матче
-      }
-    }
+    ...mapActions(['increaseMatchParticipantScore'])
   }
 }
 </script>
@@ -45,7 +41,7 @@ export default {
 .participant_name{
   position: relative;
   height: 3rem;
-  /*pointer-events: none;*/
+  pointer-events: none;
 }
 
 .participant_name-item{

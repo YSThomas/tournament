@@ -37,10 +37,17 @@ export default {
         let randomDate = new Date(2021, Math.floor(Math.random() * 11), Math.floor(Math.random() * 31) + 1)
         let matchNumber = j + 1
 
-        let currentMatch = round.roundNumber===1? new Match(randomDate,matchNumber,round.roundNumber, new Participant(), new Participant()) : new Match(randomDate,matchNumber,round.roundNumber, new Participant("TBA"), new Participant("TBA"))
+        let currentMatch = round.roundNumber === 1 ? new Match(randomDate, matchNumber, round.roundNumber, new Participant(), new Participant()) : new Match(randomDate, matchNumber, round.roundNumber, new Participant("TBA"), new Participant("TBA"))
         matchList.push(currentMatch)
       }
     })
     commit('SET_MATCHLIST', matchList)
+  },
+  increaseMatchParticipantScore({commit}, {match, i, generalScore}) { // Принимает матч и индекс участника в матче
+    generalScore = parseInt(generalScore)
+    if (match.generalMatchScore < generalScore) { // Если в матче общий счет меньше generalScore (указывается в настройках матча TournamentPage.vue)
+      commit('INCREASE_PARTICIPANT_SCORE', {match, i});
+      commit('INCREASE_GENERAL_MATCH_SCORE', {match});
+    }
   }
 }
