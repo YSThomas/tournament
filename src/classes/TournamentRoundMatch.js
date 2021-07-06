@@ -13,5 +13,6 @@ export default class TournamentRoundMatch {
     this.participantList = [...participantNameList]
     this.generalMatchScore = 0
     this.isCompleted = this.date < new Date()
+    this.winner = null
   }
 }

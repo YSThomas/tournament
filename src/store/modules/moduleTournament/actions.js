@@ -49,5 +49,10 @@ export default {
       commit('INCREASE_PARTICIPANT_SCORE', {match, i});
       commit('INCREASE_GENERAL_MATCH_SCORE', {match});
     }
+
+    if(match.generalMatchScore === generalScore){
+      const winner = match.participantList[0].score > match.participantList[1].score ? match.participantList[0] : match.participantList[1]
+      commit('SET_MATCH_WINNER', {match, winner})
+    }
   }
 }

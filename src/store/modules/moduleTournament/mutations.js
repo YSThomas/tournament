@@ -22,5 +22,8 @@ export default {
   },
   INCREASE_GENERAL_MATCH_SCORE(state, {match}){
     match.generalMatchScore++
+  },
+  SET_MATCH_WINNER(state, {match, winner}){
+    match.winner = winner
   }
 }
