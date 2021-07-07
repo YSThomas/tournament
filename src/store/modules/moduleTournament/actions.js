@@ -43,16 +43,30 @@ export default {
     })
     commit('SET_MATCHLIST', matchList)
   },
-  increaseMatchParticipantScore({commit}, {match, i, generalScore}) { // Принимает матч и индекс участника в матче
+  increaseMatchParticipantScore({commit, getters}, {matchID, i, generalScore}) { // Принимает матч и индекс участника в матче
     generalScore = parseInt(generalScore)
-    if (match.generalMatchScore < generalScore) { // Если в матче общий счет меньше generalScore (указывается в настройках матча TournamentPage.vue)
-      commit('INCREASE_PARTICIPANT_SCORE', {match, i});
-      commit('INCREASE_GENERAL_MATCH_SCORE', {match});
-    }
 
-    if(match.generalMatchScore === generalScore){
-      const winner = match.participantList[0].score > match.participantList[1].score ? match.participantList[0] : match.participantList[1]
-      commit('SET_MATCH_WINNER', {match, winner})
-    }
+    return new Promise((resolve, reject) =>{
+      if(!matchID || !Number.isInteger(i) || !generalScore) {
+        reject(`Something went wrong! Required properties is set?: Match ID (matchID): ${!!matchID}, participant index (i): ${!!i}, general match score (generalScore): ${!!generalScore}`)
+      }
+
+      const match = getters.getMatchList.find(match => match._id === matchID)
+
+      if(!match.participantList[i]){
+        reject(`Participant is undefined. Participant index: ${i}`)
+      }
+
+      if (match.generalMatchScore < generalScore) { // Если в матче общий счет меньше generalScore (указывается в настройках матча TournamentPage.vue)
+        commit('INCREASE_PARTICIPANT_SCORE', {matchID, i});
+        commit('INCREASE_GENERAL_MATCH_SCORE', {matchID});
+      }
+
+      if(match.generalMatchScore === generalScore){
+        const winner = match.participantList[0].score > match.participantList[1].score ? match.participantList[0] : match.participantList[1]
+        commit('SET_MATCH_WINNER', {matchID, winner})
+      }
+      resolve()
+    })
   }
 }

@@ -16,14 +16,13 @@ export default {
   SET_MATCHLIST(state, data) { // Устанавливает матчи в state (Удалить при необходимости)
     state.matchList = data
   },
-  INCREASE_PARTICIPANT_SCORE(state, {match, i}) {
-    // console.log(i)
-    match.participantList[i].score++ // Увеличивает счет у участника под указанным индексом
+  INCREASE_PARTICIPANT_SCORE(state, {matchID, i}) {
+    state.matchList.find(match => match._id === matchID).participantList[i].score++ // Увеличивает счет у участника под указанным индексом
   },
-  INCREASE_GENERAL_MATCH_SCORE(state, {match}){
-    match.generalMatchScore++
+  INCREASE_GENERAL_MATCH_SCORE(state, {matchID}){
+    state.matchList.find(match => match._id === matchID).generalMatchScore++
   },
-  SET_MATCH_WINNER(state, {match, winner}){
-    match.winner = winner
+  SET_MATCH_WINNER(state, {matchID, winner}){
+    state.matchList.find(match => match._id === matchID).winner = winner
   }
 }

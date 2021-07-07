@@ -3,7 +3,7 @@
     <div class="participant_name">
       <small class="participant_name-item">{{match.participantList[0].name}}</small>
     </div>
-    <img @click="increaseMatchParticipantScore({match, i:0, generalScore})" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
+    <img @click="increaseScore(0)" class="participant_img" :src="require(`../assets/${match.participantList[0].img}`)" alt="TBA">
     <span class="match_score" v-if="match.isCompleted">
       {{ match.participantList[0].score }} - {{ match.participantList[1].score }}
     </span>
@@ -14,7 +14,7 @@
     <div class="participant_name">
       <small class="participant_name-item">{{match.participantList[1].name}}</small>
     </div>
-    <img @click="increaseMatchParticipantScore({match, i:1, generalScore})" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
+    <img @click="increaseScore(1)" class="participant_img" :src="require(`../assets/${match.participantList[1].img}`)" alt="TBA">
   </div>
 </template>
 
@@ -31,7 +31,14 @@ export default {
     }
   },
   methods:{
-    ...mapActions(['increaseMatchParticipantScore'])
+    ...mapActions(['increaseMatchParticipantScore']),
+
+    increaseScore(i){
+      this.increaseMatchParticipantScore({matchID: this.match._id, i, generalScore: this.generalScore})
+          .catch(e => {
+            console.error(e)
+          })
+    }
   }
 }
 </script>
