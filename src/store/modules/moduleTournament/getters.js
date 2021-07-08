@@ -10,5 +10,5 @@ export default {
   },
   getMatchList(state){
     return state.matchList
-  }
+  },
 }
