@@ -1,5 +1,8 @@
 export default {
   getRandomNameList(state){
-    return state.names
+    return state.nameList
+  },
+  getUsedNameIndexList(state){
+    return state.usedNameIndexList
   }
 }

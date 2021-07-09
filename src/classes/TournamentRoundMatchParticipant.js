@@ -6,17 +6,19 @@ export default class TournamentRoundMatchParticipant {
    * @param name
    */
   constructor(name) {
-    this.name = name || this.getName()
+    let baseChars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*?";
+
+    this._id = `_${baseChars.charAt(Math.floor(Math.random() * (baseChars.length)))}${Date.now()}${baseChars.charAt(Math.floor(Math.random() * (baseChars.length)))}`
+
+    this.name = name || store.dispatch('getName')
+      .then(name =>{
+        this.name = name
+      })
+      .catch(e => {
+      console.log(e)
+    })
 
     this.score = 0
     this.img = "tba_400x400.jpg"
-  }
-
-  getName(){
-    const nameList = store.getters.getRandomNameList
-    const name = nameList[Math.floor(Math.random() * nameList.length)]
-    store.commit('REMOVE_USED_NAME', nameList.indexOf(name))
-
-    return name
   }
 }
