@@ -28,9 +28,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['createTournament']),
+    ...mapActions(['createTournament','clearUsedNameIndexList']),
 
     renderTournament() {
+      if(this.getUsedNameIndexList.length !== 0) this.clearUsedNameIndexList()
+
       this.createTournament(this.playersCount)
           .then(success => {
             this.message = 'Турнир успешно создан'
@@ -48,7 +50,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['getTournament','getRoundList', 'getMatchList']),
+    ...mapGetters(['getTournament','getRoundList', 'getMatchList', 'getUsedNameIndexList']),
   }
 }
 </script>
