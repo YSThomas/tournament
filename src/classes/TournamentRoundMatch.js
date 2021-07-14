@@ -6,6 +6,7 @@ export default class TournamentRoundMatch {
    * @param numberRound
    * @param participantNameList
    */
+
   constructor(date,numberMatch,numberRound, ...participantNameList) {
     this._id = '_' + Math.random().toString(36).substr(2, 9);
     this.date = date

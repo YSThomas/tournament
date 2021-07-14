@@ -1,6 +1,12 @@
 import store from "../store";
 
 export default class TournamentRoundMatchParticipant {
+
+  _id
+  name
+  score
+  img
+
   /**
    *
    * @param name
