@@ -24,5 +24,5 @@ export default {
   },
   SET_MATCH_WINNER(state, {matchID, winner}){
     state.matchList.find(match => match._id === matchID).winner = winner
-  }
+  },
 }

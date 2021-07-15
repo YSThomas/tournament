@@ -28,7 +28,6 @@ export default {
     })
   },
   clearUsedNameIndexList({commit}){
-    console.log('Почитию')
     commit('RESET_USED_NAME_INDEX_LIST')
   }
 }
