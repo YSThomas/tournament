@@ -1,18 +1,27 @@
+import Participant from "./TournamentRoundMatchParticipant";
+
 export default class TournamentRoundMatch {
+  _id
+  date
+  numberMatch
+  numberRound
+  participantList
+  generalMatchScore
+  isCompleted
+  winner
+
   /**
    *
-   * @param date
    * @param numberMatch
    * @param numberRound
-   * @param participantNameList
    */
 
-  constructor(date,numberMatch,numberRound, ...participantNameList) {
+  constructor(numberMatch,numberRound) {
     this._id = '_' + Math.random().toString(36).substr(2, 9);
-    this.date = date
+    this.date = new Date(2021, Math.floor(Math.random() * 11), Math.floor(Math.random() * 31) + 1)
     this.numberMatch = numberMatch
     this.numberRound = numberRound
-    this.participantList = [...participantNameList]
+    this.participantList = numberRound === 1 ? [new Participant(), new Participant()] : [new Participant("TBA"), new Participant("TBA")]
     this.generalMatchScore = 0
     this.isCompleted = this.date < new Date()
     this.winner = null
