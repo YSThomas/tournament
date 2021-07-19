@@ -7,6 +7,7 @@ export default class TournamentRoundMatch {
   numberRound
   participantList
   generalMatchScore
+  isStarted
   isCompleted
   winner
 
@@ -23,7 +24,8 @@ export default class TournamentRoundMatch {
     this.numberRound = numberRound
     this.participantList = numberRound === 1 ? [new Participant(), new Participant()] : [new Participant("TBA"), new Participant("TBA")]
     this.generalMatchScore = 0
-    this.isCompleted = this.date < new Date()
+    this.isCompleted = false
+    this.isStarted = this.date < new Date()
     this.winner = null
   }
 }

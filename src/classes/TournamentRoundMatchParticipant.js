@@ -14,14 +14,20 @@ export default class TournamentRoundMatchParticipant {
   constructor(name) {
     let baseChars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*?";
 
-    this._id = `_${baseChars.charAt(Math.floor(Math.random() * (baseChars.length)))}${Date.now()}${baseChars.charAt(Math.floor(Math.random() * (baseChars.length)))}`
+    this._id = '_' + Math.random().toString(36).substr(2, 9) + baseChars.charAt(Math.floor(Math.random() * (baseChars.length)));
 
     if (name){
-      this.name = name
+      // this.name = name
+      Object.assign(this, {
+        name
+      })
     } else {
       store.dispatch('getName')
         .then(name => {
-          this.name = name
+          // this.name = name
+          Object.assign(this, {
+            name
+          })
         })
         .catch(e => {
           console.log(e)

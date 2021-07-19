@@ -32,5 +32,9 @@ export default {
       name: winnerName,
       img: winnerImg,
     })
+  },
+  SET_MATCH_COMPLETED(state, i){
+    state.matchList[i].isCompleted = true
+    console.log(state.matchList[i])
   }
 }
