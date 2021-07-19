@@ -25,4 +25,12 @@ export default {
   SET_MATCH_WINNER(state, {matchID, winner}){
     state.matchList.find(match => match._id === matchID).winner = winner
   },
+  SET_WINNER_AS_A_PARTICIPANT(state, {winnerId, winnerName, winnerImg, numberRound, numberMatch, participantIndex}){
+    let match = state.matchList.find(match => match.numberRound === numberRound && match.numberMatch === numberMatch)
+    Object.assign(match.participantList[participantIndex], {
+      _id: winnerId,
+      name: winnerName,
+      img: winnerImg,
+    })
+  }
 }

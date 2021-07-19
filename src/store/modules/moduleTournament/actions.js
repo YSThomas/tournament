@@ -62,7 +62,14 @@ export default {
 
       if(match.generalMatchScore === generalScore){
         const winner = match.participantList[0].score > match.participantList[1].score ? match.participantList[0] : match.participantList[1]
+        let nextMatchParticipant
+        let participantIndex
+
+        match.numberMatch % 2 === 0 ? nextMatchParticipant = match.numberMatch : nextMatchParticipant = match.numberMatch + 1
+        match.numberMatch % 2 === 0 ? participantIndex = 1 : participantIndex = 0
+
         commit('SET_MATCH_WINNER', {matchID, winner})
+        commit('SET_WINNER_AS_A_PARTICIPANT', {winnerId: winner._id, winnerName: winner.name, winnerImg: winner.img, numberRound: match.numberRound + 1, numberMatch: nextMatchParticipant / 2, participantIndex})
       }
       resolve()
     })
