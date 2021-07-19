@@ -51,8 +51,8 @@ export default {
 
       const match = getters.getMatchList.find(match => match._id === matchID)
 
-      if(!match.participantList[i]){
-        reject(`Participant is undefined. Participant index: ${i}`)
+      if(!match.participantList[i] || match.participantList[i].name === 'TBA'){
+        reject(`Participant is undefined. Participant index: ${i}, name: ${match.participantList[i].name}`)
       }
 
       if (match.generalMatchScore < generalScore) { // Если в матче общий счет меньше generalScore (указывается в настройках матча TournamentPage.vue)
@@ -68,8 +68,13 @@ export default {
         match.numberMatch % 2 === 0 ? nextMatchParticipant = match.numberMatch : nextMatchParticipant = match.numberMatch + 1
         match.numberMatch % 2 === 0 ? participantIndex = 1 : participantIndex = 0
 
-        commit('SET_MATCH_WINNER', {matchID, winner})
-        commit('SET_WINNER_AS_A_PARTICIPANT', {winnerId: winner._id, winnerName: winner.name, winnerImg: winner.img, numberRound: match.numberRound + 1, numberMatch: nextMatchParticipant / 2, participantIndex})
+        if(match.numberRound + 1 <= getters.getTournament.roundsCount){
+          console.log(match.numberRound , getters.getTournament.roundsCount)
+          commit('SET_MATCH_WINNER', {matchID, winner})
+          commit('SET_WINNER_AS_A_PARTICIPANT', {winnerId: winner._id, winnerName: winner.name, winnerImg: winner.img, numberRound: match.numberRound + 1, numberMatch: nextMatchParticipant / 2, participantIndex})
+        }else{
+          console.log(`Победитель турнира: ${winner.name}`)
+        }
       }
       resolve()
     })
